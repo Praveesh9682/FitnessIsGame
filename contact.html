@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FitnessIsGame - Contact</title>
+
+  <style>
+    body { font-family: Arial; background: #f9f9f9; }
+    .canty { max-width: 600px; margin: auto; background: #fff; padding: 30px; border-radius: 10px; height: auto; }
+    input, textarea { width: 100%; margin: 10px 0; padding: 10px; border-radius: 5px; border: 1px solid #ccc; }
+    button { padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    button:hover { background: #2980b9; }
+  </style>
+    <!-- Scripts -->
+    <script src="fitness.js"></script>
+
+    <!-- Styles -->
+    <style>
+      @import url("web.css");
+      @import url("responsive.css");
+    </style> 
+
+    <!-- Font Awesome for social icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav id="nav" class="nav1">
+      <img src="logo1.jpg" alt="sorry" width="135px" height="57px" />
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="about.html">ABOUT US</a></li>
+        <li><a href="bmri.html">CALCULATORS</a></li>
+        <li><a href="exercise.html">EXERCISE</a></li>
+        <li><a href="diet.html">DIET PLAN</a></li>
+        <li><a href="https://fitindiahai.blogspot.com/">BLOG</a></li>
+        <li><a href="contact.html">CONTACT US</a></li>
+        <li><a href="privacy.html">PRIVACY</a></li>
+      </ul>
+    </nav>
+
+    <a href="#" class="burger" onclick="myFunction()">
+      <i class="fa fa-bars"></i>
+    </a>
+
+     <div class="canty">
+    <h1>Contact Us</h1>
+<form id="contact-form">
+      <input type="text" name="user_name" placeholder="Your Name" required>
+      <input type="email" name="user_email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </div>
+
+<script>
+  const form = document.getElementById('contact-form');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent page refresh
+
+    const formData = {
+      user_name: form.user_name.value,
+      user_email: form.user_email.value,
+      message: form.message.value
+    };
+
+    fetch('http://localhost:3000/send', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData)
+    })
+    .then(response => response.text())
+    .then(data => {
+      alert(data);
+      form.reset();
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('Something went wrong!');
+    });
+  });
+</script>
+
+    <!-- Footer -->
+    <!-- <footer class="foot" style="bottom: 0cm;">
+      Copyright © 2025 FitnessIsGame All rights | reserved.
+    </footer> -->
+    <!-- Footer -->
+<footer class="foot" style="position: fixed; bottom: 0; left: 0; width: 100%; background: rgb(84 97 90); text-align: center; padding: 10px 0;">
+  Copyright © 2025 FitnessIsGame.Com All rights | reserved.
+</footer>
+
+  </body>
+</html>
